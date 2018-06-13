@@ -13,11 +13,14 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
      <script type="text/babel">
        class Button extends React.Component {
+         clickMessage() {
+           alert('Git and GitHub are killing me but I am starting to git it!');
+         }
 
          render() {
            return (
              <div>
-               <button>Click Me</button>
+               <button onClick={this.clickMessage}>Click Me</button>
             </div>
            );
          }
