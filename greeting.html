@@ -11,23 +11,37 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.1.0/umd/react.development.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.1.0/umd/react-dom.development.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+
      <script type="text/babel">
+
+       const green = '#39D1B4';
+       const blue = '#6666ff';
+
        class Button extends React.Component {
-         clickMessage() {
-           alert('Git and GitHub are killing me but I am starting to git it!');
+
+         constructor(props) {
+           super(props);
+           this.state = { color: blue };
+           this.changeColor = this.changeColor.bind(this);
+         }
+
+         changeColor() {
+           const newColor = this.state.color == blue ? green : blue;
+           this.setState({color: newColor});
          }
 
          render() {
            return (
-             <div>
-               <button onClick={this.clickMessage}>Click Me</button>
+             <div style={{background: this.state.color}}>
+               <h1>Change my color {this.props.name} by clicking the button</h1>
+               <button onClick={this.changeColor}>Click Me</button>
             </div>
            );
          }
        }
 
        ReactDOM.render(
-         <Button />,
+         <Button name="Bloc Student" />,
          document.getElementById('app')
        );
 
